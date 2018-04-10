@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { TreeModule } from 'angular-tree-component';
 
 import {EmpresasComponent} from './empresas/empresas.component';
+import {DisenioComponent} from './disenio/disenio.component';
+
 
 
 //import { Dashboardv1Component } from './dashboardv1/dashboardv1.component';
@@ -11,7 +14,8 @@ import {EmpresasComponent} from './empresas/empresas.component';
 
 const routes = [
     //{ path: '', redirectTo: 'dashboard' },
-    { path: 'empresas', component: EmpresasComponent },
+    { path: 'empresas', component: EmpresasComponent }, 
+    { path: 'disenio', component: DisenioComponent },
 
 ];
 
@@ -20,14 +24,17 @@ const routes = [
     imports: [
         SharedModule,
         RouterModule.forChild(routes),
+        TreeModule,
   
     ],
     declarations: [
         EmpresasComponent,
+        DisenioComponent,
       //  Dashboardv1Component,
       //  Dashboardv2Component,
       //  Dashboardv3Component
     ],
+    providers: [D3Service],
     exports: [
         RouterModule
     ]
