@@ -7,7 +7,8 @@ import { Dashboardv2Component } from './dashboardv2/dashboardv2.component';
 import { Dashboardv3Component } from './dashboardv3/dashboardv3.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'dashboard' },
+    //{ path: '', redirectTo: 'dashboard' },
+    { path: '', redirectTo: 'v1' },
     { path: 'v1', component: Dashboardv1Component },
     { path: 'v2', component: Dashboardv2Component },
     { path: 'v3', component: Dashboardv3Component },

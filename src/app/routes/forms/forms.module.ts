@@ -14,13 +14,15 @@ import { ExtendedComponent } from './extended/extended.component';
 import { ValidationComponent } from './validation/validation.component';
 import { UploadComponent } from './upload/upload.component';
 import { CropperComponent } from './cropper/cropper.component';
+import { CanalesComponent } from './canales/canales.component';
 
 const routes: Routes = [
     { path: 'standard', component: StandardComponent },
     { path: 'extended', component: ExtendedComponent },
     { path: 'validation', component: ValidationComponent },
     { path: 'upload', component: UploadComponent },
-    { path: 'cropper', component: CropperComponent }
+    { path: 'cropper', component: CropperComponent },
+    { path: 'canales', component: CanalesComponent }
 ];
 
 @NgModule({
@@ -41,6 +43,7 @@ const routes: Routes = [
         ExtendedComponent,
         ValidationComponent,
         UploadComponent,
+        CanalesComponent,
         CropperComponent
     ],
     exports: [

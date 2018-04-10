@@ -404,6 +404,12 @@ const headingMain = {
     heading: true
 };
 
+const informes = {
+    text: 'Informes',
+    link: '/informes',
+    icon: 'icon-eyeglass'
+}
+
 const headingComponents = {
     text: 'Components',
     heading: true
@@ -422,9 +428,106 @@ const headingEstructura = {
 
 const disenioEstructura ={
     text: 'Diseño estructura',
-    link: '',
+    link: '/disenio',
     icon: 'icon-layers',
 }
+
+const empresas ={
+    text: 'Empresas',
+    link: '/comercial/empresas',
+    icon: 'icon-folder',
+}
+
+const canales ={
+    text: 'Canales',
+    link: '/forms/canales',
+    icon: 'icon-shuffle',
+}
+
+const areasGeograficas ={
+    text: 'Áreas Geográficas',
+    link: '/areasgeograficas',
+    icon: 'icon-compass',
+}
+
+const puestos ={
+    text: 'Puestos',
+    link: '/puestos',
+    icon: 'icon-user',
+}
+
+const agrupadores ={
+    text: 'Agrupadores',
+    link: '',
+    icon: 'icon-frame',
+     submenu: [
+        {
+            text: 'Puestos',
+            link: '/agrupadores/puestos'
+        },
+        {
+            text: 'Nodos',
+            link: '/agrupadores/nodos'
+        }
+        ]
+}
+
+const comisiones = {
+    text: 'Comisiones',
+    link: '/comisiones',
+    heading: true
+}
+
+const personas = {
+    text: 'Personas',
+    link: '/personas',
+    heading: true
+}
+
+const esquemasComisiones ={
+    text: 'Diseño Esquemas',
+    link: '/esquemas',
+    icon: 'icon-equalizer',
+}
+
+const objetivos ={
+    text: 'Objetivos',
+    link: '/objetivos',
+    icon: 'icon-diamond',
+}
+
+const liquidaciones = {
+    text: 'Liquidaciones',
+    link: '/liquidaciones',
+    icon: 'icon-pencil',
+}
+
+const regularizaciones = {
+    text: 'Regularizaciones',
+    link: '/reugularizaciones',
+    icon: 'icon-loop',
+}
+
+const traspasos = {
+    text: 'Traspasos',
+    link: '/traspasos',
+    icon: 'icon-arrow-right',
+}
+
+
+
+const asignacionEsquemas = {
+    text: 'Asignación Esquemas',
+    link: '/asignacionesquemas',
+    icon: 'icon-login',
+}
+
+const buscarPersonas = {
+    text: 'Buscar Personas',
+    link: '/buscarpersonas',
+    icon: 'icon-people',
+}
+
 
 export const menu = [
     headingMain,
@@ -433,8 +536,26 @@ export const menu = [
     Agenda,
     Tareas,
     Ayuda,
+    informes,
+    //Estructura comercial
     headingEstructura,
     disenioEstructura,
+    empresas,
+    canales,
+    areasGeograficas,
+    puestos,
+    agrupadores,
+    //Comisiones
+    comisiones,
+    esquemasComisiones,
+    objetivos,
+    liquidaciones,
+    regularizaciones,
+    traspasos,
+    //personas
+    personas,
+    asignacionEsquemas,
+    buscarPersonas,
     //Widgets,
     headingComponents,
     Elements,
