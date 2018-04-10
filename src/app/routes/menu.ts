@@ -422,13 +422,12 @@ const headingMore = {
 
 const headingEstructura = {
     text: 'Estructura comercial',
-    link: '/estructura',
     heading: true
 };
 
 const disenioEstructura ={
     text: 'Diseño estructura',
-    link: '/disenio',
+    link: '/comercial/disenio',
     icon: 'icon-layers',
 }
 
