@@ -1,28 +1,196 @@
 <div class="content-heading">
     <div>
-        Angular Tree
-        <small>A simple yet powerful tree component for Angular</small>
+        Estructura comercial
+        <small>Diseño de la estructura comercial</small>
     </div>
 </div>
 <div class="container-fluid">
+
     <div class="row">
-        <div class="col-xl-4 col-md-6 col-xl-push-3 col-md-push-6">
-            <div class="card">
+        <div class="col-xl-6 col-md-6 col-xl-push-6 col-md-push-6">
+            <div class="card card-default">
+                <div class="card-header">Estructura</div>
+                <div class="card-header">
+                    <button class="btn btn-success" (click)="addNode(tree)">Añadir nodo</button>
+                    <button class="btn btn-danger" (click)="addNode(tree)">Borrar nodo</button>
+                </div>
                 <div class="card-body">
                     <form>
-                        <input class="form-control" #filter (keyup)="filterNodes(filter.value, tree)" placeholder="filter nodes" />
+                        <input class="form-control" #filter (keyup)="filterNodes(filter.value, tree)" placeholder="filtrar nodos" />
                     </form>
                     <tree-root #tree [nodes]="nodes" [focused]="true" [options]="customTemplateStringOptions" (onEvent)="onEvent($event)">
                         <ng-template #treeNodeTemplate let-node>
                             <span title="{{node.data.subTitle}}">{{ node.data.name }}</span>
                             <span class="float-right">{{ childrenCount(node) }}</span>
-                            <button class="btn btn-secondary btn-xs" (click)="go($event)"><em class="fa fa-exclamation text-muted"></em></button>
+                            <button class="btn btn-secondary btn-xs" (click)="go($event,tree)"><em class="fa fa-info text-muted"></em></button>
                         </ng-template>
-                        <ng-template #loadingTemplate>Loading, please hold....</ng-template>
+                        
                     </tree-root>
                 </div>
             </div>
         </div>
+
+        <div class ="col-md-6">
+
+        <div class="card card-default">
+            <div class="card-header">Detalle del nodo</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inlineFormInputName2">Tipo de nodo</label>
+                    <input class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" type="text" placeholder="Seleccione nodo" 
+                      value={{type}}  />
+                </div>
+                 <div class="form-group">
+                    <label for="inlineFormInputName3">Nombre de nodo</label>
+                    <input class="form-control mb-2 mr-sm-2" id="inlineFormInputName3" type="text" placeholder="Seleccione nodo" 
+                      value={{name}} disabled="" />
+                </div>
+                <div class="form-group">
+                    <label for="inlineFormInputName3">Descripción</label>
+                    <input class="form-control mb-2 mr-sm-2" id="inlineFormInputName3" type="text" placeholder="Seleccione nodo"
+                      value={{description}} disabled="" />
+                </div>
+                 
+                
+            </div>
+        <div class="card card-transparent">
+    <tabset class="bg-white p-0" justified="true">
+        <tab>
+            <ng-template tabHeading>
+                <em class="fa fa-clock-o fa-fw"></em>Indicadores
+            </ng-template>
+            <div class="card-body">
+             <div class="card">
+                <div class="d-flex">
+                <div class="w-50 bb br px-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <em class="fa fa-graduation-cap fa-2x text-info"></em>
+                        <div class="ml-auto">
+                            <div class="card-body text-right">
+                                <h4 class="mt-0">{{numSupervisores}}</h4>
+                                <p class="mb-0 text-muted">Supervisores</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-50 bb br px-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <em class="fa fa-users fa-2x text-info"></em>
+                        <div class="ml-auto">
+                            <div class="card-body text-right">
+                                <h4 class="mt-0">{{numAgentes}}</h4>
+                                <p class="mb-0 text-muted">Agentes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+                <fieldset>
+                    <div class="card">
+                    
+                    <div class="col-md-10">
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" value="" />
+                                <span class="fa fa-check"></span>Admite hijos</label>
+                        </div>
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" checked="" value="" />
+                                <span class="fa fa-check"></span>Esquemas comisiones asociados</label>
+                        </div>
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" checked=""  value="" />
+                                <span class="fa fa-check"></span>Supervisores asociados</label>
+                        </div>
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" checked="" value="" />
+                                <span class="fa fa-check"></span>Inscrito en DGS</label>
+                        </div>
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" checked="" value="" />
+                                <span class="fa fa-user"></span>Obligatorio supervisor</label>
+                        </div>
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" checked="" value="" />
+                                <span class="fa fa-star"></span>Activo</label>
+                        </div>
+                        
+                        </div>
+                    </div>
+                 </fieldset>
+                
+            </div>
+        </tab>
+        <tab>
+            <ng-template tabHeading>
+                <em class="fa fa-money fa-fw"></em>Supervisores
+            </ng-template>
+            <div>
+                <!-- START table responsive-->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Identificador</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Fecha Desde</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3326</td>
+                                <td>Jose</td>
+                                <td>Gonzalez</td>
+                                <td>21/01/2013</td>
+                            </tr>
+                            <tr>
+                                <td>3325</td>
+                                <td>Luis</td>
+                                <td>Perez</td>
+                                <td>13/04/2014</td>
+                            </tr>
+                            <tr>
+                                <td>3324</td>
+                                <td>Daniel</td>
+                                <td>Lopez</td>
+                                <td>3/12/2004</td>
+                            </tr>
+                            <tr>
+                                <td>3535</td>
+                                <td>Fernando</td>
+                                <td>Arias</td>
+                                <td>3/12/2004</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END table responsive-->
+                <div class="card-footer text-right"><a class="btn btn-success" href="#">Asignar Supervisor </a>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+</div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+<!--
         <div class="col-xl-3 col-md-6 col-xl-pull-4 col-md-pull-6">
             <h5>Tree Control API:</h5>
             <div class="btn-group btn-group-justified mb">
@@ -49,9 +217,9 @@
                     Add Node
                 </a>
             </div>
-            <a class="btn btn-secondary btn-block" (click)="activateSubSub(tree)">
-                Activate inner node
-            </a>
+            
         </div>
+
+    -->
     </div>
 </div>

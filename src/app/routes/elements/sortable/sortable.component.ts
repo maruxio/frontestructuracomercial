@@ -1,65 +1,192 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Product } from './sortable.product';
+import { TreeNode, TREE_ACTIONS, KEYS, IActionMapping } from 'angular-tree-component';
+
+const actionMapping: IActionMapping = {
+    mouse: {
+        contextMenu: (tree, node, $event) => {
+            $event.preventDefault();
+            alert(`context menu for ${node.data.name}`);
+        },
+        dblClick: TREE_ACTIONS.TOGGLE_EXPANDED,
+        click: (tree, node, $event) => {
+            $event.shiftKey
+                ? TREE_ACTIONS.TOGGLE_ACTIVE_MULTI(tree, node, $event)
+                : TREE_ACTIONS.TOGGLE_ACTIVE(tree, node, $event);
+
+
+        }
+    },
+    keys: {
+        [KEYS.ENTER]: (tree, node, $event) => alert(`This is ${node.data.name}`)
+    }
+};
 
 @Component({
     selector: 'app-sortable',
     templateUrl: './sortable.component.html',
-    styleUrls: ['./sortable.component.scss']
+    styleUrls: ['./sortable.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class SortableComponent implements OnInit {
 
-    availableProducts: Array<Product> = [];
-    shoppingBasket: Array<Product> = [];
+    nodes: any[] = null;
+   
 
-    listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
+    listOne: Array<string> = ['Canal', 'Subcanal', 'Producto', 'Colectivo', 'Agencia','Mediador'];
 
-    listBoxers: Array<string> = ['Sugar Ray Robinson', 'Muhammad Ali', 'George Foreman', 'Joe Frazier', 'Jake LaMotta', 'Joe Louis', 'Jack Dempsey', 'Rocky Marciano', 'Mike Tyson', 'Oscar De La Hoya'];
-    listTeamOne: Array<string> = [];
-    listTeamTwo: Array<string> = [];
+    
+    customTemplateStringOptions = {
+        // displayField: 'subTitle',
+        isExpandedField: 'expanded',
+        idField: 'uuid',
+        getChildren: this.getChildren.bind(this),
+        actionMapping,
+        allowDrag: true
+    };
+
+    asyncChildren = [
+        {
+            name: 'child2.1',
+            subTitle: 'new and improved'
+        }, {
+            name: 'child2.2',
+            subTitle: 'new and improved2'
+        }
+    ];
 
     constructor() {
-        this.initProducts();
+        setTimeout(() => {
+            this.nodes = [
+                {
+
+                    expanded: true,
+                    name: 'Ramo Asistencia Nueva Producción',
+                    description: 'the root',
+                    children: [
+                        {
+                            expanded: true,
+                            name: 'Particular',
+                            description: 'Particular',
+                            children :[
+                            {
+                                expanded: true,
+                                name: 'Menor 60 años',
+                                children : [
+                                {
+                                    expanded:true,
+                                    name: 'Primer año'
+
+                                }, 
+                                {
+                                    expanded:true,
+                                    name: 'Segundo año y sucesivos'
+
+                                },
+
+
+                                ]
+                                
+                            },
+                            {
+                                expanded: true,
+                                name: '60 años o mayor',
+                                children : [
+                                {
+                                    extended:true,
+                                    name: 'Primer año'
+
+                                }, 
+                                {
+                                    extended:true,
+                                    name: 'Segundo año y sucesivos'
+
+                                },
+
+
+                                ]
+                                
+
+
+                            },
+
+
+
+                            ]
+
+                        }, {
+
+
+                            expanded: true,
+                            name: 'Familiar 2 o más personas',
+                            description: 'Particular',
+                            children :[
+                            {
+                                expanded: true,
+                                name: 'Menor 60 años',
+                                children : [
+                                {
+                                    extended:true,
+                                    name: 'Primer año'
+
+                                }, 
+                                {
+                                    extended:true,
+                                    name: 'Segundo año y sucesivos'
+
+                                },
+
+
+                                ]
+                                
+                            },
+                            {
+                                expanded: true,
+                                name: '60 años o mayor',
+                                children : [
+                                {
+                                    extended:true,
+                                    name: 'Primer año'
+
+                                }, 
+                                {
+                                    extended:true,
+                                    name: 'Segundo año y sucesivos'
+
+                                },
+
+
+                                ]
+                                
+
+
+                            },
+
+
+
+                            ]
+
+
+
+
+                        }, 
+                    ]
+                },
+                
+            ];
+        }, 1);
     }
 
-    initProducts() {
-        this.availableProducts.push(new Product('Blue Shoes', 3, 35));
-        this.availableProducts.push(new Product('Good Jacket', 1, 90));
-        this.availableProducts.push(new Product('Red Shirt', 5, 12));
-        this.availableProducts.push(new Product('Blue Jeans', 4, 60));
+     getChildren(node: any) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => resolve(this.asyncChildren.map((c) => {
+                return Object.assign({}, c, {
+                    hasChildren: node.level < 5
+                });
+            })), 1000);
+        });
     }
-
-    orderedProduct($event) {
-        let orderedProduct: Product = $event.dragData;
-        orderedProduct.quantity--;
-    }
-
-    addToBasket($event) {
-        let newProduct: Product = $event.dragData;
-        for (let indx in this.shoppingBasket) {
-            let product: Product = this.shoppingBasket[indx];
-            if (product.name === newProduct.name) {
-                product.quantity++;
-                return;
-            }
-        }
-        console.log('adding ' + newProduct);
-        this.shoppingBasket.push(new Product(newProduct.name, 1, newProduct.cost));
-    }
-
-    totalCost(): number {
-        let cost = 0;
-        for (let indx in this.shoppingBasket) {
-            let product: Product = this.shoppingBasket[indx];
-            cost += (product.cost * product.quantity);
-        }
-        return cost;
-    }
-
-    resetBasket() {
-        this.availableProducts = [];
-        this.shoppingBasket = [];
-        this.initProducts();
-    }
+    
 
     ngOnInit() {
     }

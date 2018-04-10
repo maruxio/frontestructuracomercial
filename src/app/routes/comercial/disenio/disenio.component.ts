@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { TreeNode, TREE_ACTIONS, KEYS, IActionMapping } from 'angular-tree-component';
+import { TreeNode, TREE_ACTIONS, KEYS, IActionMapping, TreeComponent } from 'angular-tree-component';
 
 const actionMapping: IActionMapping = {
     mouse: {
@@ -27,23 +27,13 @@ const actionMapping: IActionMapping = {
 })
 
 export class DisenioComponent implements OnInit{
- nodes: any[] = null;
 
-    asyncChildren = [
-        {
-            name: 'child2.1',
-            subTitle: 'new and improved'
-        }, {
-            name: 'child2.2',
-            subTitle: 'new and improved2'
-        }
-    ];
+    nodes: any[] = null;
 
     customTemplateStringOptions = {
         // displayField: 'subTitle',
         isExpandedField: 'expanded',
         idField: 'uuid',
-        getChildren: this.getChildren.bind(this),
         actionMapping,
         allowDrag: true
     };
@@ -96,11 +86,7 @@ export class DisenioComponent implements OnInit{
                         }
                     ]
                 },
-                {
-
-                    name: 'asyncroot',
-                    hasChildren: true
-                }
+               
             ];
         }, 1);
     }
@@ -108,15 +94,6 @@ export class DisenioComponent implements OnInit{
     ngOnInit() {
     }
 
-    getChildren(node: any) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => resolve(this.asyncChildren.map((c) => {
-                return Object.assign({}, c, {
-                    hasChildren: node.level < 5
-                });
-            })), 1000);
-        });
-    }
 
     addNode(tree) {
         this.nodes[0].children.push({

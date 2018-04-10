@@ -427,7 +427,7 @@ const headingEstructura = {
 
 const disenioEstructura ={
     text: 'Diseño estructura',
-    link: '/comercial/disenio',
+    link: '/elements/navtree',
     icon: 'icon-layers',
 }
 
@@ -485,7 +485,7 @@ const personas = {
 
 const esquemasComisiones ={
     text: 'Diseño Esquemas',
-    link: '/esquemas',
+    link: '/elements/sortable',
     icon: 'icon-equalizer',
 }
 
@@ -555,7 +555,7 @@ export const menu = [
     personas,
     asignacionEsquemas,
     buscarPersonas,
-    //Widgets,
+    Widgets,
     headingComponents,
     Elements,
     Forms,
