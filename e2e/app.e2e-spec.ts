@@ -9,6 +9,6 @@ describe('ng2angle App', function() {
 
   it('should display Angle in h1 tag', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Angle');
+    expect(page.getParagraphText()).toEqual('NFQ');
   });
 });
