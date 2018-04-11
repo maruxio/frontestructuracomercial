@@ -4,7 +4,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { TreeModule } from 'angular-tree-component';
 
 import {EmpresasComponent} from './empresas/empresas.component';
-//import {DisenioComponent} from './disenio/disenio.component';
+import {DisenioComponent} from './disenio/disenio.component';
 
 
 
