@@ -523,7 +523,7 @@ const asignacionEsquemas = {
 
 const buscarPersonas = {
     text: 'Buscar Personas',
-    link: '/buscarpersonas',
+    link: '/extras/contactdetails',
     icon: 'icon-people',
 }
 
