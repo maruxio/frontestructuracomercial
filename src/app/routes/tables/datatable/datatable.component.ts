@@ -21,17 +21,17 @@ export class DatatableComponent implements OnInit {
     // ng2Table
     public rows: Array<any> = [];
     public columns: Array<any> = [
-        { title: 'Name', name: 'name', filtering: { filterString: '', placeholder: 'Filter by name' } },
+        { title: 'Name', name: 'name', filtering: { filterString: '', placeholder: 'Filtrar por nombre' } },
         {
-            title: 'Position',
+            title: 'Posición',
             name: 'position',
             sort: false,
-            filtering: { filterString: '', placeholder: 'Filter by position' }
+            filtering: { filterString: '', placeholder: 'Filtrar por posición' }
         },
-        { title: 'Office', className: ['office-header', 'text-success'], name: 'office', sort: 'asc' },
-        { title: 'Extn.', name: 'ext', sort: '', filtering: { filterString: '', placeholder: 'Filter by extn.' } },
-        { title: 'Start date', className: 'text-warning', name: 'startDate' },
-        { title: 'Salary ($)', name: 'salary' }
+        { title: 'Área', className: ['office-header', 'text-success'], name: 'office', sort: 'asc' },
+        { title: 'Identificador', name: 'ext', sort: '', filtering: { filterString: '', placeholder: 'Filtrar por id' } },
+        { title: 'Fecha cierre', className: 'text-warning', name: 'startDate' },
+        { title: 'Importe', name: 'salary' }
     ];
     public page: number = 1;
     public itemsPerPage: number = 10;

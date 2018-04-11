@@ -1,14 +1,14 @@
 <div class="content-heading">
-    <div>Data-Tables components
-        <small>Native and not wrapped angular2 based data-tables</small></div>
+    <div>Informes
+        <small>Comisiones</small></div>
 </div>
 <!-- <alert [type]="'info'">None of this examples are based on the official jQuery-Datatables</alert> -->
-<h4 class="page-header">ng2 Table
-    <small>Simple table extension with sorting, filtering, paging... for Angular2 apps by ValorSoftware</small>
+<h4 class="page-header">Informe de comisiones
+ 
 </h4>
 <div class="mb-3 clearfix">
     <div class="pull-let wd-md">
-        <input *ngIf="config.filtering" placeholder="Filter all columns" [ngTableFiltering]="config.filtering" class="form-control" (tableChanged)="onChangeTable(config)" />
+        <input *ngIf="config.filtering" placeholder="Buscar en todas las columnas" [ngTableFiltering]="config.filtering" class="form-control" (tableChanged)="onChangeTable(config)" />
     </div>
 </div>
 <div class="card card-default">

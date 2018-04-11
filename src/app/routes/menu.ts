@@ -406,7 +406,7 @@ const headingMain = {
 
 const informes = {
     text: 'Informes',
-    link: '/informes',
+    link: '/tables/datatable',
     icon: 'icon-eyeglass'
 }
 
@@ -555,16 +555,16 @@ export const menu = [
     personas,
     asignacionEsquemas,
     buscarPersonas,
-    Widgets,
-    headingComponents,
-    Elements,
-    Forms,
-    Charts,
-    Tables,
-    Maps,
-    headingMore,
-    Pages,
-    Blog,
-    Ecommerce,
-    Extras
+    //Widgets,
+    //headingComponents,
+    //Elements,
+    //Forms,
+    //Charts,
+    //Tables,
+    //Maps,
+    //headingMore,
+    //Pages,
+    //Blog,
+    //Ecommerce,
+    //Extras
 ];
