@@ -29,6 +29,7 @@ const routes = [
     ],
     declarations: [
         EmpresasComponent,
+        DisenioComponent,
       //  Dashboardv1Component,
       //  Dashboardv2Component,
       //  Dashboardv3Component
