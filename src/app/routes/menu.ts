@@ -497,7 +497,7 @@ const objetivos ={
 
 const liquidaciones = {
     text: 'Liquidaciones',
-    link: '/liquidaciones',
+    link: '/blog/articles',
     icon: 'icon-pencil',
 }
 
